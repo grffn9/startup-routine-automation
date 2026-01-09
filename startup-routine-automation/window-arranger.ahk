@@ -62,10 +62,11 @@ if WinWait(notionExe, , 15) {
     }
     
     if (newNotionHwnd != 0) {
-        ; Position the new Notion window (Missing Semester) on portrait monitor
+        ; Position the new Notion window (Missing Semester) on Secondary monitor (Left)
+        ; Coordinate -1920 is the exact left edge of the secondary monitor based on debug output
         WinRestore newNotionHwnd
         Sleep 200
-        WinMove 1920, 0, 1080, 1920, newNotionHwnd
+        WinMove -1920, 0, 1920, 1080, newNotionHwnd
         Sleep 200
         WinMaximize newNotionHwnd
 
@@ -95,10 +96,9 @@ if WinWait(calendarExe, , 15) {
     Sleep 200
     WinRestore calendarExe  ; Restore first in case it's already maximized
     Sleep 200
-    ; COORDINATE CALCULATION:
-    ; Portrait monitor to the LEFT of Main: use -1080
-    ; Portrait monitor to the RIGHT of Main: use 1920
-    WinMove 1920, 0, 1080, 1920, calendarExe
+    ; Position Notion Calendar on Secondary monitor (Left)
+    ; Coordinate -1920 is the exact left edge of the secondary monitor
+    WinMove -1920, 0, 1920, 1080, calendarExe
     Sleep 200
     WinMaximize calendarExe
 }
